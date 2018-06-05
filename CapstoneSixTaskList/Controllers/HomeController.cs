@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapstoneSixTaskList.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,6 +24,16 @@ namespace CapstoneSixTaskList.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult TasksList()
+        {
+            TaskListEntities db = new TaskListEntities();
+            List<Task> Task = db.Tasks.ToList();
+            ViewBag.Tasks = Task;
+
+            
 
             return View();
         }

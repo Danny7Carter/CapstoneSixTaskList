@@ -1,0 +1,36 @@
+﻿@using CapstoneSixTaskList.Models;
+@{
+    ViewBag.Title = "Task List";
+}
+<h2>@ViewBag.ItemName.</h2>
+<h3>@ViewBag.Message</h3>
+<form action="~/Home/ItemListByDescription" method="get">
+    <label>
+        Search by Description:
+        <input type="text" name="Description" class="form-control" />
+    </label>
+    <input type="submit" value="Search by Description" class="btn btn-primary" />
+</form>
+<br />
+<form action="~/Home/TaskListByTaskID" method="get">
+    <label>
+        Search by Task ID:
+        <select name="taskid">
+            @foreach (Task t in ViewBag.Items)
+            {
+                <option value="@t.TaskID">@t.TaskID</option>
+            }
+        </select>
+    </label>
+    <input type="submit" value="Search by Task" class="btn btn-primary" />
+</form>
+<table class="table table-bordered">
+    <tr>
+        <th><a href="~/Home/ItemListSorted?column=Description">Description</a></th>
+        <th><a href="~/Home/ItemListSorted?column=DueDate">DueDate</a></th>
+        <th><a href="~/Home/ItemListSorted?column=Status">Status</a></th>
+        <th><a href="~/Home/ItemListSorted?column=Email">Email</a></th>
+        <th><a href="~/Home/ItemListSorted?column=Owner">Owner</a></th>
+        <th>Action</th>
+    </tr>
+    </table>
